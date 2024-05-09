@@ -1,4 +1,4 @@
-function resetLanguageFilter() {
+function resetFilter() {
     window.location.href = window.location.pathname;
   }
   
@@ -12,11 +12,6 @@ function resetLanguageFilter() {
     }
   });
   
-//Reset author filter
-function resetAuthorFilter() {
-    window.location.href = window.location.pathname;
-  }
-  
   //Filter submission
   document.getElementById('authorFilter').addEventListener('change', function() {
     var selectedAuthor = this.value;
@@ -27,11 +22,6 @@ function resetAuthorFilter() {
     }
   });
 
-  //Reset genre filter
-function resetGenreFilter() {
-    window.location.href = window.location.pathname;
-  }
-  
   //Filter submission
   document.getElementById('genreFilter').addEventListener('change', function() {
     var selectedGenre = this.value;

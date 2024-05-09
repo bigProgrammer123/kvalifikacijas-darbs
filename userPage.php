@@ -11,9 +11,15 @@
     <h1>Book Search</h1>
   </header>
   <div class="container">
+    <div class="container">
+      <?php include 'filters.php'; ?>
+      <script src="filter.js"></script>
 
-  <?php include 'filters.php'; ?>
-  <script src="filter.js"></script>
+      <form action="" method="POST">
+      <input id="search" name="search" type="text" placeholder="Search...">
+      <input id="submit" name="submit" type="submit" value="Search">
+      </form>
+    </div>
 
     <div class="books">
       <?php
@@ -48,6 +54,13 @@
           $sql .= " WHERE genre = '$author'";
         }
       }
+
+      if (isset($_POST["submit"])) {
+        $str = $_POST["search"];
+        $sql = "SELECT * FROM book WHERE title LIKE '%$str%' OR author LIKE '%$str%'";
+        $result = $conn->query($sql);
+      
+      }
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
@@ -74,9 +87,19 @@
     <p id="modalAuthor"></p>
     <p id="modalLanguage"></p>
     <p id="modalDescription"></p>
+    <button id="orderButton" type="button" onclick="toggleForm()">Order</button>
+    <form  action="order.php" method="POST" id="orderForm" style="display: none;">
+    <strong>Your full name:</strong>
+      <input type="text" name="name" placeholder="Name" required><br>
+      <strong>Your e-mail:</strong>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <strong>Your phone number:</strong>
+      <input type="tel" name="phone_num" placeholder="Phone Number" required>
+      <button type="submit">Submit Order</button>
+    </form>
   </div>
 </div>
-<script src="window.js"></script>
+<script src="userWindow.js"></script>
 
   </div>
   <div class="login-form">
@@ -101,6 +124,10 @@
       <input type="password" id="password" name="password" required><br>
       <button type="submit">Login</button>
     </form>
+  </div>
+  <br>
+  
+<?php include 'contactForm.php'; ?>
   </div>
 </body>
 </html>
