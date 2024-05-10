@@ -16,9 +16,10 @@ if ($conn->connect_error) {
 $name = $_POST['name'];
 $email = $_POST['email'];
 $phone_num = $_POST['phone_num'];
+$book_id = $_POST['book_id'];
 
 // Prepare SQL statement to insert data into database
-$sql = "INSERT INTO user_info (name, email, phone_num) VALUES ('$name', '$email', '$phone_num')";
+$sql = "INSERT INTO user_info (name, email, phone_num, book_id) VALUES ('$name', '$email', '$phone_num', '$book_id')";
 
 // Execute SQL statement
 if ($conn->query($sql) === TRUE) {

@@ -1,35 +1,36 @@
-var buttons = document.querySelectorAll('.view-details-btn');
-
-// Add event listener to each button
-buttons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    var title = button.parentNode.querySelector('h2').textContent;
-    var author = button.parentNode.querySelector('p:nth-of-type(1)').textContent;
-    var language = button.getAttribute('data-language');
-    var description = button.getAttribute('data-description');
-    var coverImgSrc = button.getAttribute('data-cover');
-
-    openModal(title, author, coverImgSrc, language, description);
-  });
-});
-
-function openModal(title, author, cover_img, language, description) {
-  var modal = document.getElementById("myModal");
-  var modalImg = document.getElementById("modalImg");
-  var modalTitle = document.getElementById("modalTitle");
-  var modalAuthor = document.getElementById("modalAuthor");
-  var modalLanguage = document.getElementById("modalLanguage");
-  var modalDescription = document.getElementById("modalDescription");
-
+// Edit modal
+function openEditModal(bookId) {
+  var modal = document.getElementById("editModal");
   modal.style.display = "block";
-  modalImg.src = cover_img;
-  modalTitle.textContent = title;
-  modalAuthor.textContent = author;
-  modalLanguage.textContent = language;
-  modalDescription.textContent = description;
+
+  fetch("edit.php?book_id=" + bookId)
+      .then(response => response.text())
+      .then(data => {
+      document.getElementById("editModalContent").innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
 }
 
-function closeModal() {
-  var modal = document.getElementById("myModal");
+function closeEditModal() {
+  var modal = document.getElementById("editModal");
   modal.style.display = "none";
+}
+
+
+function openModal() {
+  document.getElementById("addModal").style.display = "block";
+}
+
+function submitModal() {
+  document.getElementById("addModal").style.display = "none";
+  document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      this.submit();
+  });
+}
+function closeModal() {
+  document.getElementById("addModal").style.display = "none";
+}
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
 }

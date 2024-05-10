@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <div class="contact">
-    <button onClick="openForm()">Contact us</button>
+    <button class="contact-btn" onClick="openForm()">Contact us</button>
     <div class="form-popup" id="myForm">
     <form action="" class="form-container" method="POST">
       <h2>Question Form</h2>
@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <label for="question"><b>Your questions or comments:</b></label>
       <textarea placeholder="Enter your question" name="question" required></textarea>
 
-      <button type="submit" class="btn">Submit</button>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      <button class="login-btn" type="submit" class="btn">Submit</button>
+      <button class="login-btn" type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </form>
 </div>
 <script>

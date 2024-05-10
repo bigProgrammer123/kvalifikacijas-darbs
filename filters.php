@@ -16,43 +16,59 @@ $result_languages = $conn->query($sql_languages);
 $sql_authors = "SELECT DISTINCT author FROM book";
 $result_authors = $conn->query($sql_authors);
 
-$sql_genres = "SELECT DISTINCT genre FROM book";
-$result_genres = $conn->query($sql_genres);
+$sql_udk = "SELECT DISTINCT udk FROM book";
+$result_udk = $conn->query($sql_udk);
+
+$sql_price = "SELECT DISTINCT price FROM book";
+$result_price = $conn->query($sql_price);
 ?>
-
-<!-- Language UI -->
-<select id="languageFilter">
-  <option value="all">All Languages</option>
-  <?php
-  // Populate language options
-  while ($row = $result_languages->fetch_assoc()) {
-      echo "<option value='" . $row['language'] . "'>" . $row['language'] . "</option>";
-  }
-  ?>
-</select>
-
-<!-- Author UI -->
-<select id="authorFilter">
-  <option value="all">All Authors</option>
-  <?php
-  // Populate author options
-  while ($row = $result_authors->fetch_assoc()) {
-      echo "<option value='" . $row['author'] . "'>" . $row['author'] . "</option>";
-  }
-  ?>
-</select>
-
-<!-- Genre UI -->
-<select id="genreFilter">
-  <option value="all">All Genres</option>
-  <?php
-  // Populate genre options
-  while ($row = $result_genres->fetch_assoc()) {
-      echo "<option value='" . $row['genre'] . "'>" . $row['genre'] . "</option>";
-  }
-  ?>
-</select>
-<button onclick="resetFilter()">Reset</button>
+<div class="filter">
+  <!-- Language UI -->
+  <div class="lang">
+  <select id="languageFilter">
+    <option value="all">All Languages</option>
+    <?php
+    while ($row = $result_languages->fetch_assoc()) {
+        echo "<option value='" . $row['language'] . "'>" . $row['language'] . "</option>";
+    }
+    ?>
+  </select>
+</div>
+  <!-- Author UI -->
+  <div class="auth">
+  <select id="authorFilter">
+    <option value="all">All Authors</option>
+    <?php
+    while ($row = $result_authors->fetch_assoc()) {
+        echo "<option value='" . $row['author'] . "'>" . $row['author'] . "</option>";
+    }
+    ?>
+  </select>
+</div>
+  <!-- UDK UI -->
+  <div class="udk">
+  <select id="udkFilter">
+    <option value="all">All Types</option>
+    <?php
+    while ($row = $result_udk->fetch_assoc()) {
+        echo "<option value='" . $row['udk'] . "'>" . $row['udk'] . "</option>";
+    }
+    ?>
+  </select>
+</div>
+  <!-- Price UI -->
+  <div class="price">
+  <select id="priceFilter">
+    <option value="all">All Prices</option>
+    <?php
+    while ($row = $result_price->fetch_assoc()) {
+        echo "<option value='" . $row['price'] . "'>" . $row['price'] . "</option>";
+    }
+    ?>
+  </select>
+  <button class="filter-btn" onclick="resetFilter()">Reset</button>
+</div>
+</div>
 
 <?php
 $conn->close();

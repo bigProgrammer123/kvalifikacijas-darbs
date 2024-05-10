@@ -6,7 +6,7 @@
   <title>Books</title>
   <link rel="stylesheet" href="style/style.css">
 </head>
-<body>
+<body id="bodyUser">
   <header>
     <h1>Book Search</h1>
   </header>
@@ -15,9 +15,9 @@
       <?php include 'filters.php'; ?>
       <script src="filter.js"></script>
 
-      <form action="" method="POST">
-      <input id="search" name="search" type="text" placeholder="Search...">
-      <input id="submit" name="submit" type="submit" value="Search">
+      <form action="" method="POST" class="search-bar">
+      <input class="search-input" id="search" name="search" type="text" placeholder="Search...">
+      <input class="search-btn" id="submit" name="submit" type="submit" value="Search">
       </form>
     </div>
 
@@ -34,6 +34,8 @@
         die("Connection failed: " . $conn->connect_error);
       }
 
+      session_start();
+
       $sql = "SELECT * FROM book";
 
       if(isset($_GET['language']) && !empty($_GET['language'])) {
@@ -48,10 +50,16 @@
           $sql .= " WHERE author = '$author'";
         }
       }
-      if(isset($_GET['genre']) && !empty($_GET['genre'])) {
-        $author = $_GET['genre'];
-        if($author !== 'all') {
-          $sql .= " WHERE genre = '$author'";
+      if(isset($_GET['udk']) && !empty($_GET['udk'])) {
+        $udk = $_GET['udk'];
+        if($udk !== 'all') {
+          $sql .= " WHERE udk = '$udk'";
+        }
+      }
+      if(isset($_GET['price']) && !empty($_GET['price'])) {
+        $price = $_GET['price'];
+        if($price !== 'all') {
+          $sql .= " WHERE price = '$price'";
         }
       }
 
@@ -66,10 +74,10 @@
       if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
           echo "<div class='book'>";
-          echo "<img class='book-cover' src='" . $row["cover_img"] . "' alt='book-cover'>";
+          echo "<img class='book-cover' src='Images/" . $row["cover_img"] . "' alt='book-cover'>";
           echo "<h2>" . $row["title"] . "</h2>";
           echo "<p>" . $row["author"] . "</p>";
-          echo "<button class='view-details-btn' data-language='" . $row["language"] . "' data-description='" . $row["description"] . "'>View Details</button>";
+          echo "<button class='view-details-btn' data-book-id='" . $row["book_id"] . "' data-language='" . $row["language"] . "' data-description='" . $row["description"] . "' data-type='" . $row["type"] . "' data-udk='" . $row["udk"] . "' data-link='" . $row["link_to_literature"] . "' data-price='" . $row["price"] . "' data-date='" . $row["publish_date"] . "'>View Details</button>";
           echo "</div>";
         }
       } else {
@@ -78,34 +86,11 @@
       $conn->close();
       ?>
     </div>
-<!-- Modal -->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="modalImg" class="modal-img" src="" alt="book-cover">
-    <h2 id="modalTitle"></h2>
-    <p id="modalAuthor"></p>
-    <p id="modalLanguage"></p>
-    <p id="modalDescription"></p>
-    <button id="orderButton" type="button" onclick="toggleForm()">Order</button>
-    <form  action="order.php" method="POST" id="orderForm" style="display: none;">
-    <strong>Your full name:</strong>
-      <input type="text" name="name" placeholder="Name" required><br>
-      <strong>Your e-mail:</strong>
-      <input type="email" name="email" placeholder="Email" required><br>
-      <strong>Your phone number:</strong>
-      <input type="tel" name="phone_num" placeholder="Phone Number" required>
-      <button type="submit">Submit Order</button>
-    </form>
-  </div>
-</div>
-<script src="userWindow.js"></script>
 
   </div>
   <div class="login-form">
     <h2>Login</h2>
     <?php
-      session_start();
 
       $login_error = "";
 
@@ -118,16 +103,52 @@
       <?php endif; 
     ?>
     <form action="login.php" method="post">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required><br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required><br>
-      <button type="submit">Login</button>
+      <label class="label" for="username">Username:</label>
+      <input class="input" type="text" id="username" name="username" required><br>
+      <label class="label" for="password">Password:</label>
+      <input class="input" type="password" id="password" name="password" required><br>
+      <button class="login-btn" type="submit">Login</button>
     </form>
   </div>
   <br>
   
-<?php include 'contactForm.php'; ?>
+    <?php include 'contactForm.php'; ?>
   </div>
+      <!-- Modal -->
+      <div id="myModal" class="detailModal">
+        <div class="detail-modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <img id="modalImg" class="detail-modal-img" src="" alt="book-cover">
+          <h2 id="modalTitle"></h2>
+          <strong>By:</strong>
+          <p style="display: inline-block" id="modalAuthor"></p>&ensp;&ensp;&ensp;
+          <strong>Language</strong>
+          <p style="display: inline-block" id="modalLanguage"></p><br>
+          <strong>Description</strong>
+          <p style="display: inline-block" id="modalDescription"></p><br>
+          <strong>Type of literature:</strong>
+          <p style="display: inline-block" id="modalType"></p>&ensp;&ensp;
+          <strong>Udk</strong>
+          <p style="display: inline-block" id="modalUdk"></p>&ensp;&ensp;
+          <strong>Price:</strong>
+          <p style="display: inline-block" id="modalPrice"></p><br>
+          <strong>Link to an external source:</strong>
+          <p style="display: inline-block" id="modalLink"></p><br>
+          <strong>Publishing year:</strong>
+          <p style="display: inline-block" id="modalDate"></p><br>
+          <button class="login-btn" id="orderButton" type="button" onclick="toggleForm()">Order</button>
+          <form class="modal-form" action="order.php" method="POST" id="orderForm" style="display: none;">
+            <strong>Your full name:</strong>
+            <input type="text" name="name" placeholder="Name" required><br>
+            <strong>Your e-mail:</strong>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <strong>Your phone number:</strong>
+            <input type="tel" name="phone_num" placeholder="Phone Number" required>
+            <input type="hidden" id="bookIdInput" name="book_id">
+            <button class="login-btn" type="submit">Submit Order</button>
+          </form>
+        </div>
+    </div>
+    <script src="userWindow.js"></script>
 </body>
 </html>
