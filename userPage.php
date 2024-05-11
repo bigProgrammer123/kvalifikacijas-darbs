@@ -110,7 +110,6 @@
       <button class="login-btn" type="submit">Login</button>
     </form>
   </div>
-  <br>
   
     <?php include 'contactForm.php'; ?>
   </div>
@@ -125,7 +124,7 @@
           <strong>Language</strong>
           <p style="display: inline-block" id="modalLanguage"></p><br>
           <strong>Description</strong>
-          <p style="display: inline-block" id="modalDescription"></p><br>
+          <p style="display: inline-block; width: 50%" id="modalDescription"></p><br>
           <strong>Type of literature:</strong>
           <p style="display: inline-block" id="modalType"></p>&ensp;&ensp;
           <strong>Udk</strong>

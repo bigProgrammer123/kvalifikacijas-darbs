@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -52,63 +51,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <div id="addModal" class="modalAdd">
         <div class="modal-content">
-        <form action="" method="POST" enctype="multipart/form-data">
-        <div class="col-md-5">
+        <form class="modal-form" action="" method="POST" enctype="multipart/form-data">
+        <span class="close" onclick="closeModal()">&times;</span>
+            <button class="form-btn" onClick="submitModal()" type="submit" class="btn">Upload</button>
+        <div>
             <strong>Title:</strong>
             <input type="text" name="title" class="form-control" placeholder="Title" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Author:</strong>
             <input type="text" name="author" class="form-control" placeholder="Author" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Description:</strong>
             <textarea name="description" class="form-control" cols="30" rows="10" required></textarea>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Language:</strong>
             <input type="text" name="language" class="form-control" placeholder="Language" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Image:</strong>
             <input type="file" name="cover_img" class="form-control" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Type:</strong>
             <input type="text" name="type" class="form-control" placeholder="Type" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Publishing date:</strong>
             <input type="text" name="publish_date" class="form-control" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Status:</strong>
             <input type="text" name="status" class="form-control" placeholder="Status" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>UDK:</strong>
             <input type="text" name="udk" class="form-control" placeholder="UDK" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Price:</strong>
             <input type="text" step="any" name="price" class="form-control" placeholder="Price" required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>External link to publication:</strong>
-            <input type="url" name="link_to_literature" class="form-control" placeholder="Link" required>
+            <input type="url" name="link_to_literature" class="form-control" placeholder="Link">
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Inventory number:</strong>
             <input type="text" name="invent_num" class="form-control" placeholder="Num"required>
         </div>
-        <div class="col-md-5">
+        <div>
             <strong>Structural unit:</strong>
             <input type="text" name="structural_unit" class="form-control" placeholder="Structural unit" required>
-        </div>
-        <div class="col-md-2">
-            <br/>
-            <button onClick="submitModal()" type="submit" class="btn btn-success">Upload</button>
-            <span class="close" onclick="closeModal()">&times;</span>
         </div>
     </div>
 </form>

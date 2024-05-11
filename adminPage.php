@@ -57,7 +57,6 @@
             $str = $_POST["search"];
             $sql = "SELECT * FROM book WHERE title LIKE '%$str%' OR author LIKE '%$str%'";
             $result = $conn->query($sql);
-          
           }
 
         $result = $conn->query($sql);
@@ -65,22 +64,25 @@
         ?>
 <body id="bodyAdmin">
     <div class="nav">
-        <button class="btn" onclick="window.location.href='userPage.php'">Save & close</button>
-        <br>
-        <button class="btn" onclick="window.location.href='?view=<?php echo $toggleView; ?>'">
+        <form action="" method="POST" class="a-search-bar">
+          <input class="a-search-input" id="search" name="search" type="text" placeholder="Search...">
+          <input class="a-search-btn" id="submit" name="submit" type="submit" value="Search">
+        </form>
+        <button class="nav-btn" onclick="window.location.href='userPage.php'">Save & close</button>
+        <button class="nav-btn" onclick="window.location.href='?view=<?php echo $toggleView; ?>'">
             View <?php echo ucfirst($toggleView); ?>
         </button>
-        <button type="button" onclick="openModal()">Add</button>
+        <button class="nav-btn" type="button" onclick="openModal()">Add</button>
         <?php include 'add.php' ?>
         <?php include 'notification.php' ?>
-        <?php include 'filters.php'; ?>
+        <?php include 'adminFilters.php'; ?>
         <?php include 'searchbar.php'; ?>
         <script src="filter.js"></script>
     </div>
     <!-- Modal -->
     <div id="editModal" class="modal">
     <div id="editModalContent" class="modal-content">
-        <span class="close" onclick="closeEditModal()">&times;</span>
+        <span class="nav-btn" onclick="closeEditModal()">&times;</span>
     </div>
     </div>
         <div class="book-list">
@@ -94,7 +96,7 @@
                     echo "<p>" . $row["author"] . "</p>";
                     echo "<p>" . $row["language"] . "</p>";
                     echo "<button class='btn' onclick='openEditModal(" . $row["book_id"] . ")'>Edit</button>";
-                    echo "<a class='btn' href='delete.php?book_id=" . $row["book_id"] . "'>Delete</a>";
+                    echo "<a class='btn' style='text-decoration: none;' href='delete.php?book_id=" . $row["book_id"] . "'>Delete</a>";
                     echo "</div>";
                 } elseif($view === 'users') {
                     echo "<div class='user'>";

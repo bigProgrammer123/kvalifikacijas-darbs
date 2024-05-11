@@ -27,7 +27,7 @@ $conn->close();
 ?>
 
 <div class="questions">
-  <button class="btn" onClick="openNotif()">View New Users</button>
+  <button class="nav-btn" onClick="openNotif()">View New Users</button>
   <div class="notif" id="userNotif">
     <h2>New Users</h2>
     <table>
@@ -69,7 +69,7 @@ $conn->close();
               echo "<tr>";
               echo "<td>" . $row["name"] . "</td>";
               echo "<td>" . $row["book_id"] . "</td>";
-              echo "<td><button class='view-order-btn' 
+              echo "<td><button class='btn view-order-btn' 
                 data-name='" . $row["name"] . "'
                 data-email='" . $row["email"] . "'
                 data-book-id='" . $row["book_id"] . "'
@@ -87,21 +87,26 @@ $conn->close();
         ?>
       </tbody>
     </table>
-    <button onclick="closeNotif()">Close</button>
+    <button class="btn" onclick="closeNotif()">Close</button>
   </div>
 </div>
-<div id="notifModal" class="modal">
+<div id="notifModal" class="notifModal">
   <div class="modal-content">
-    <span class="close" onclick="closeNotifModal()">&times;</span>
-    <img id="modalImg" class="modal-img" src="" alt="book-cover">
-    <p id="modalName"></p>
-    <p id="modalEmail"></p>
-    <p id="modalAuthor"></p>
-    <p id="modalTitle"></p>
-    <p id="modalBookID"></p>
-    <p id="modalStatus"></p>
-    <p id="modalUnit"></p>
-    <p id="modalUdk"></p>
+    <span class="notif-btn" onclick="closeNotifModal()">&times;</span><br>
+    <strong>User Info:</strong>
+    <p style="display: inline-block" id="modalName"></p>&ensp;&ensp;
+    <strong>User Email:</strong>
+    <p style="display: inline-block" id="modalEmail"></p><br>
+    <strong>Book Author</strong>
+    <p style="display: inline-block" id="modalAuthor"></p>&ensp;&ensp;
+    <strong>Book Title:</strong>
+    <p style="display: inline-block" id="modalTitle"></p><br>
+    <strong>Book ID:</strong>
+    <p style="display: inline-block" id="modalBookID"></p>&ensp;&ensp;
+    <strong>Status:</strong>
+    <p style="display: inline-block" id="modalStatus"></p>&ensp;&ensp;
+    <strong>Storage Unit:</strong>
+    <p style="display: inline-block" id="modalUnit"></p>
   </div>
 </div>
 <script src="notifications.js"></script>

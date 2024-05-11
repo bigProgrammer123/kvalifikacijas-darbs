@@ -25,25 +25,38 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['book_id'])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         ?>
-        <form action="update.php" method="post" enctype="multipart/form-data">
+        <form class="modal-form" action="update.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="book_id" value="<?php echo $row['book_id']; ?>">
-            Title: <input type="text" name="title" value="<?php echo $row['title']; ?>" required><br>
-            Author: <input type="text" name="author" value="<?php echo $row['author']; ?>" required><br>
-            Description: <textarea name="description" cols="30" rows="10" required><?php echo $row['description']; ?></textarea><br>
-            Language: <input type="text" name="language" value="<?php echo $row['language']; ?>"><br>
-            Cover Image: <?php if($row['cover_img']) { ?>
+            <strong>Title: </strong>
+            <input type="text" name="title" value="<?php echo $row['title']; ?>" required><br>
+            <strong>Author: </strong>
+            <input type="text" name="author" value="<?php echo $row['author']; ?>" required><br>
+            <strong>Description: </strong>
+            <textarea name="description" cols="70" rows="5" required><?php echo $row['description']; ?></textarea><br>
+            <strong>Language: </strong>
+            <input type="text" name="language" value="<?php echo $row['language']; ?>"><br>
+            <strong>Cover Image: </strong>
+            <?php if($row['cover_img']) { ?>
             <img class="modalImg" src="Images/<?php echo $row['cover_img']; ?>" alt="book-cover">
             <?php } ?>
             <input type="file" name="cover_img"><br>
-            Type: <input type="text" name="type" value="<?php echo $row['type']; ?>"><br>
-            Publishing date: <input type="text" name="publish_date" value="<?php echo $row['publish_date']; ?>"><br>
-            Status: <input type="text" name="status" value="<?php echo $row['status']; ?>"><br>
-            UDK: <input type="text" name="udk" value="<?php echo $row['udk']; ?>"><br>
-            Price: <input type="text" step="any" name="price" value="<?php echo $row['price']; ?>"><br>
-            External link: <input type="url" name="link_to_literature" value="<?php echo $row['link_to_literature']; ?>"><br>
-            Inventory number: <input type="text" name="invent_num" value="<?php echo $row['invent_num']; ?>"><br>
-            Structural unit: <input type="text" name="structural_unit" value="<?php echo $row['structural_unit']; ?>"><br>
-            <input type="submit" value="Submit">
+            <strong>Type: </strong>
+            <input type="text" name="type" value="<?php echo $row['type']; ?>"><br>
+            <strong>Publishing date: </strong>
+            <input type="text" name="publish_date" value="<?php echo $row['publish_date']; ?>"><br>
+            <strong>Status: </strong>
+            <input type="text" name="status" value="<?php echo $row['status']; ?>"><br>
+            <strong>UDK: </strong>
+            <input type="text" name="udk" value="<?php echo $row['udk']; ?>"><br>
+            <strong>Price: </strong>
+            <input type="text" step="any" name="price" value="<?php echo $row['price']; ?>"><br>
+            <strong>External link: </strong>
+            <input type="url" name="link_to_literature" value="<?php echo $row['link_to_literature']; ?>"><br>
+            <strong>Inventory number: </strong>
+            <input type="text" name="invent_num" value="<?php echo $row['invent_num']; ?>"><br>
+            <strong>Structural unit: </strong>
+            <input type="text" name="structural_unit" value="<?php echo $row['structural_unit']; ?>"><br>
+            <input class="nav-btn" type="submit" value="Save&close">
         </form>
         <?php
     } else {

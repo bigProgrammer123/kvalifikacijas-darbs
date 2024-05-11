@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: userPage.php");
         exit();
     } else {
-        echo "One or more required fields are not set.";
+        echo "";
     }
 }
 ?>

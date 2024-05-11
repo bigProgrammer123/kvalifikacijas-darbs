@@ -1,6 +1,5 @@
 var buttons = document.querySelectorAll('.view-details-btn');
 
-// Add event listener to each button
 buttons.forEach(function(button) {
   button.addEventListener('click', function() {
     var book = button.parentNode;
@@ -51,7 +50,6 @@ function openModal(title, author, cover_img, language, description, type, udk, l
   bookIdInput.value = book_id;
 }
 
-// Function to toggle the visibility of the form
 function toggleForm() {
   var form = document.getElementById("orderForm");
   var orderButton = document.getElementById("orderButton");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2024 at 10:51 PM
+-- Generation Time: May 11, 2024 at 06:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -59,7 +59,7 @@ CREATE TABLE `book` (
   `status` varchar(20) NOT NULL,
   `udk` varchar(100) NOT NULL,
   `price` decimal(11,2) NOT NULL,
-  `link_to_literature` varchar(100) NOT NULL,
+  `link_to_literature` varchar(1000) NOT NULL,
   `invent_num` varchar(20) NOT NULL,
   `structural_unit` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -69,8 +69,23 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`book_id`, `title`, `author`, `language`, `type`, `cover_img`, `publish_date`, `description`, `create_date`, `status`, `udk`, `price`, `link_to_literature`, `invent_num`, `structural_unit`) VALUES
-(1, 'test', 'test', 'English', 'book', 'placeholder.png', 1990, 'test', '2024-05-10 19:58:05', 'ready', '03', 2.00, 'https://www.javatpoint.com/image-gallery-crud-using-php-mysql', '125', 'my mind'),
-(2, 'Big book', 'Great Guy', 'English', 'book', 'placeholder.png', 1876, 'test book for testing', '2024-05-10 19:22:10', 'ready', '01', 0.30, 'https://www.javatpoint.com/image-gallery-crud-using-php-mysql', '125', 'my mind');
+(15, 'Kitāb al-aqdas', 'Baháʼuʼlláh', 'Persian', 'Book', 'placeholder.png', 1992, 'Baháʼuʼlláh. Kitāb al-aqdas. Persian. Haifa : Baháʼí World Centre, [c1992]', '2024-05-11 15:00:38', 'Available', '02 Religion', 2.69, 'http://primocat.bl.uk/F/?func=direct&local_base=PRIMO&doc_number=016897006&format=001&con_lng=eng&_g', '34', 'Nacionālais centrs'),
+(16, 'Kitāb al-aqdas', 'Baháʼuʼlláh', 'Persian', 'Book', 'placeholder.png', 1995, 'Baháʼuʼlláh. Kitāb al-aqdas. Persian. Canada : Quebecor Jasper Printing, [c1995]', '2024-05-11 15:04:23', 'Available', '02 Religion', 3.42, '', '35', 'Nacionālais centrs'),
+(17, 'Tablets of the divine plan', 'ʻAbduʼl-Bahá', 'English', 'Book', 'placeholder.png', 1993, 'ʻAbduʼl-Bahá. Tablets of the divine plan. 1st pocket-size ed. Wilmette, Ill. : Baháʼí Pub. Trust, 1993.', '2024-05-11 15:13:00', 'Available', '02 Religion', 1.27, 'https://lccn.loc.gov/91025381', '178002', 'Nacionālais centrs'),
+(18, 'The Kitáb-i-íqán : the Book of certitude', 'Baháʼuʼlláh', 'English', 'Book', 'placeholder.png', 1983, 'Baháʼuʼlláh. The Kitáb-i-íqán : the Book of certitude / translated by Shoghi Effendi. 1st pocket-size ed. Wilmette, Ill., Baháʼí Pub. Committee, 1983.', '2024-05-11 15:19:49', 'Available', '02 Religion', 2.74, 'https://lccn.loc.gov/00709564', 'JE11.3.0', 'Storage'),
+(19, 'Writings of Baha\'u\'llah : a compilation', 'Baháʼuʼlláh', 'English', 'Book', 'placeholder.png', 1986, 'Baháʼuʼlláh. Writings of Baha\'u\'llah : a compilation. New Delhi : Baháʼí Pub. Trust, 1986.', '2024-05-11 15:30:54', 'Available', '02 Religion', 7.17, 'http://primocat.bl.uk/F/?func=direct&local_base=PRIMO&doc_number=009254960&format=001&con_lng=eng&_g', 'JE18.0', 'Nacionālais centrs'),
+(20, 'Selections from the writings of the Báb', 'Báb', 'English', 'Book', 'placeholder.png', 1976, 'Báb. Selections from the writings of the Báb. Haifa : The Centre ; Wilmette, Ill. : distributed in the U.S. by Baháʼí Pub. Trust, c1976.', '2024-05-11 15:34:45', 'Available', '02 Religion', 2.23, 'https://lccn.loc.gov/79670141', 'LV00.0.0', 'Storage'),
+(21, 'Selections from the writings of the Báb', 'Báb', 'English', 'Book', 'placeholder.png', 1976, 'Báb. Selections from the writings of the Báb. Haifa : The Centre ; Wilmette, Ill. : distributed in the U.S. by Baháʼí Pub. Trust, c1976.', '2024-05-11 15:36:18', 'Available', '02', 2.23, 'https://lccn.loc.gov/79670141', 'LV00.0.1', 'Nacionālais centrs'),
+(22, 'Selections from the writings of the Báb', 'Báb', 'English', 'Book', 'placeholder.png', 1976, 'Báb. Selections from the writings of the Báb. Haifa : The Centre ; Wilmette, Ill. : distributed in the U.S. by Baháʼí Pub. Trust, c1976.', '2024-05-11 15:37:44', 'Available', '02 Religion', 2.23, 'https://lccn.loc.gov/79670141', 'LV00.0.2', 'Nacionālais centrs'),
+(23, ' A concordance to the writings of Baháʼuʼlláh', 'Nelson, Lee', 'English', 'Book', 'placeholder.png', 1988, 'Nelson, Lee, 1955- A concordance to the writings of Baháʼuʼlláh. Wilmette, Ill. : Baháʼí Pub. Trust, c1988.', '2024-05-11 15:39:26', 'Available', '02 Religion', 11.10, 'https://lccn.loc.gov/88006176', 'LV1.0', 'Nacionālais centrs'),
+(24, 'The Kitáb-i-aqdas = The most holy book', 'Baháʼuʼlláh', 'English', 'Book', 'placeholder.png', 1992, 'Baháʼuʼlláh. The Kitáb-i-aqdas = The most holy book. Haifa : Baháʼí World Centre, c1992.', '2024-05-11 15:41:37', 'Available', '02 Religion', 2.96, 'https://lccn.loc.gov/2001390888', 'LV10.0', 'Nacionālais centrs'),
+(25, 'The Kitáb-i-aqdas = The most holy book', 'Baháʼuʼlláh', 'English', 'Book', 'placeholder.png', 1992, 'Baháʼuʼlláh. The Kitáb-i-aqdas = The most holy book. Haifa : Baháʼí World Centre, c1992.', '2024-05-11 15:42:51', 'Available', '02 Religion', 2.96, 'https://lccn.loc.gov/2001390888', 'LV10.0.1', 'Storage'),
+(26, 'The Kitáb-i-aqdas = The most holy book', 'Baháʼuʼlláh', 'English', 'Book', 'placeholder.png', 1992, 'Baháʼuʼlláh. The Kitáb-i-aqdas = The most holy book. Haifa : Baháʼí World Centre, c1992.', '2024-05-11 15:43:57', 'Available', '02 Religion', 2.96, 'https://lccn.loc.gov/2001390888', 'LV10.0.2', 'Nacionālais centrs'),
+(27, 'Secret in the Garden', 'Barnum-Newman, Winifred', 'English', 'Book', 'placeholder.png', 1980, 'Barnum-Newman, Winifred. Secret in the Garden. Wlmette, Ill. : Baháʼí Publ. Trust, 1980.', '2024-05-11 15:46:28', 'Available', '08 Language. Literature', 0.32, '', 'LV90.0.0', 'Storage'),
+(28, 'Secret in the Garden', 'Barnum-Newman, Winifred', 'English', 'Book', 'placeholder.png', 1980, 'Barnum-Newman, Winifred. Secret in the Garden. Wlmette, Ill. : Baháʼí Publ. Trust, 1980.', '2024-05-11 15:47:58', 'Available', '08 Language. Literature', 0.32, '', 'LV90.0.1', 'Nacionālais centrs'),
+(29, 'Simply noble : A step-by-step guide to cultivating', 'Reyhani, Ramona', 'English', 'Book', 'placeholder.png', 2005, 'Reyhani, Ramona. Simply noble : A step-by-step guide to cultivating the best in your child. Berlin : Horizonte Publishing Trust, c2005, 2006.', '2024-05-11 15:53:31', 'Available', '06 Applied sciences', 1.84, '', 'RI92.0.0', 'Riga centre'),
+(30, 'Bahājiešu lūgšanas : Bahāullā, Baba un Abdulbahā a', 'Baháʼuʼlláh, ʻAbduʼl-Bahá, Báb', 'Latvian', 'Book', 'placeholder.png', 2003, 'Bahājiešu lūgšanas : Bahāullā, Baba un Abdulbahā atklato lūgšanu izlase. Rēzekne : Bahāi ticības Rīgas draudzes Vietējā Garīgā Padome, 2003.', '2024-05-11 16:01:27', 'Available', '02 Religion', 1.96, '', '266', 'Riga centre'),
+(31, 'The spiritual revolution', 'Thornhill, Ontario : Canadian Baháʼí Community', 'English', 'Brochure', 'placeholder.png', 1974, 'The spiritual revolution. Thornhill, Ontario : Canadian Baháʼí Community, 1974.', '2024-05-11 16:08:11', 'Available', '02 Religion', 0.18, '', 'LV456,0,0', 'Nacionālais centrs');
 
 -- --------------------------------------------------------
 
@@ -120,7 +135,7 @@ INSERT INTO `user_question` (`question_id`, `name`, `email`, `question`, `is_vie
 (27, 'test', 'test@test.test', 'testtesttsettesttesttest', 1),
 (28, 'big filnal test', 'eliza.liepniece@gmail.com', 'testing big testin very important', 1),
 (29, 'name', 'eliza.liepniece-pavlova@birgermind.com', 'test question', 1),
-(30, 'name', 'example@email.com', 'my question is here!', 0);
+(30, 'name', 'example@email.com', 'my question is here!', 1);
 
 --
 -- Indexes for dumped tables
@@ -164,7 +179,7 @@ ALTER TABLE `admin_info`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user_info`
